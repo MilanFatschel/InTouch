@@ -1,10 +1,12 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+
+import { MessageList } from "./client/components/MessageList";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>InTouch</Text>
+      <MessageList></MessageList>
     </View>
   );
 }
@@ -12,8 +14,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
