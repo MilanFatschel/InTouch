@@ -12,7 +12,7 @@ export class MessageList extends React.Component {
       messages: [],
       messageToSend: ''
     }
-    this.submitMessage = this.onSubmitMessage.bind(this);
+    this.onSubmitMessage = this.onSubmitMessage.bind(this);
   }
 
   componentDidMount() {
