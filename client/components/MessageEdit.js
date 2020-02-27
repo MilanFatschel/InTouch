@@ -14,13 +14,17 @@ export class MessageEdit extends React.Component {
   onSubmitMessage() {
     this.props.socket.emit("MessageSentToServer", this.state.messageToSend);
     this.setState({ messageToSend: "" });
+    this.refs[TextInputMessageEdit].focus();
   }
 
   render() {
     return (
       <TextInput
-        style={{ height: 40, borderWidth: 2, top: 600 }}
-        autoCorrect={false}
+        ref = 'TextInputMessageEdit'
+        style={{ height: 40, width: 300, borderWidth: 2, top: 600 }}
+        placeholder = "Enter a Message..."
+        multiline = {true}
+        blurOnSubmit = {true}
         value={this.state.messageToSend}
         onSubmitEditing={() => this.onSubmitMessage()}
         onChangeText={messageToSend => {
