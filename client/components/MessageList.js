@@ -24,6 +24,7 @@ export class MessageList extends React.Component {
     const styles = StyleSheet.create({
       container: {
         height: 400,
+        width: 300,
         flex: 1,
         backgroundColor: "#A9A9A9"
       }

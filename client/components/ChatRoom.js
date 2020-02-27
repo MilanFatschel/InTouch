@@ -2,7 +2,7 @@ import React from "react";
 import io from "socket.io-client";
 
 import { MessageList } from "./../components/MessageList";
-import { MessageEdit } from "./MessageEdit";
+import { MessageEdit } from "./../components/MessageEdit";
 
 const masterSocket = io("http://127.0.0.1:3000");
 
@@ -14,10 +14,10 @@ export class ChatRoom extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <MessageList socket={masterSocket}></MessageList>
         <MessageEdit socket={masterSocket}></MessageEdit>
-      </div>
+      </React.Fragment>
     );
   }
 }
