@@ -8,19 +8,20 @@ export class MessageEdit extends React.Component {
     this.state = {
       messageToSend: ""
     };
+    this.textInputMessageEdit = React.createRef();
     this.onSubmitMessage = this.onSubmitMessage.bind(this);
   }
 
   onSubmitMessage() {
     this.props.socket.emit("MessageSentToServer", this.state.messageToSend);
     this.setState({ messageToSend: "" });
-    this.refs[TextInputMessageEdit].focus();
+    this.refs.textInputMessageEdit.focus();
   }
 
   render() {
     return (
       <TextInput
-        ref = 'TextInputMessageEdit'
+        ref = {this.textInputMessageEdit}
         style={{ height: 40, width: 300, borderWidth: 2, top: 600 }}
         placeholder = "Enter a Message..."
         multiline = {true}
