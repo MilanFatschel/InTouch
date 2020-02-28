@@ -1,7 +1,7 @@
 import React from "react";
 
 import { StyleSheet, ScrollView, View } from "react-native";
-import { Message } from "./../components/Message";
+import { Message } from "./Message";
 
 export class MessageList extends React.Component {
   constructor(props) {

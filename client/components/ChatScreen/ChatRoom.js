@@ -1,8 +1,8 @@
 import React from "react";
 import io from "socket.io-client";
 
-import { MessageList } from "./../components/MessageList";
-import { MessageEdit } from "./../components/MessageEdit";
+import { MessageList } from "./MessageList";
+import { MessageEdit } from "./MessageEdit";
 
 const masterSocket = io("http://127.0.0.1:3000");
 

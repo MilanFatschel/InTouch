@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import { ChatRoom } from "./client/components/ChatRoom";
+import { ChatRoom } from "./client/components/ChatScreen/ChatRoom";
 
 export default function App() {
   return (
