@@ -14,6 +14,7 @@ export class MessageList extends React.Component {
 
   componentDidMount() {
     this.props.socket.on("UpdateClientMessageList", msg => {
+      console.log(msg);
       this.setState({
         messages: [...this.state.messages, msg]
       });
@@ -32,7 +33,7 @@ export class MessageList extends React.Component {
 
     // Map message list to message component
     const messagesToDisplay = this.state.messages.map(message => (
-      <Message messageText={message}> </Message>
+      <Message message={message}> </Message>
     ));
 
     return <View style={styles.container}>{messagesToDisplay}</View>;
