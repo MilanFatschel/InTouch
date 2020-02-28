@@ -18,7 +18,6 @@ export class ChatRoom extends React.Component {
     let socket = io.connect(masterSocket);
     socket.on("connect", () => {
       this.state.clientId = socket.id;
-      console.log("Testing::::" + socket.id);
     });
   }
 
