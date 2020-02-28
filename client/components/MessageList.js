@@ -1,6 +1,6 @@
 import React from "react";
 
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 import { Message } from "./../components/Message";
 
 export class MessageList extends React.Component {
@@ -25,9 +25,13 @@ export class MessageList extends React.Component {
     const styles = StyleSheet.create({
       container: {
         height: 400,
-        width: 300,
-        flex: 1,
-        backgroundColor: "#A9A9A9"
+        width: 500,
+        flexDirection: "column",
+        backgroundColor: "#F5F5F5",
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        borderBottomLeftRadius: 15,
+        borderBottomRightRadius: 15
       }
     });
 
@@ -36,6 +40,11 @@ export class MessageList extends React.Component {
       <Message message={message}> </Message>
     ));
 
-    return <View style={styles.container}>{messagesToDisplay}</View>;
+    return (
+      <ScrollView style={styles.container}>
+        <View>{messagesToDisplay}
+        </View>
+      </ScrollView>
+    );
   }
 }

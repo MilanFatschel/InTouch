@@ -1,7 +1,7 @@
 import React from "react";
 import io from "socket.io-client";
 
-import { TextInput } from "react-native";
+import { TextInput, StyleSheet } from "react-native";
 
 export class MessageEdit extends React.Component {
   constructor(props) {
@@ -30,9 +30,23 @@ export class MessageEdit extends React.Component {
   }
 
   render() {
+    const styles = StyleSheet.create({
+      container: {
+        height: 40,
+        width: 500,
+        borderWidth: 1,
+        borderColor: "#DCDCDC",
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        borderBottomLeftRadius: 15,
+        borderBottomRightRadius: 15,
+        padding: 10
+      }
+    });
+
     return (
       <TextInput
-        style={{ height: 40, width: 300, borderWidth: 2, top: 600 }}
+        style={styles.container}
         placeholder="Enter a Message..."
         multiline={true}
         blurOnSubmit={true}
