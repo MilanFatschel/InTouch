@@ -13,12 +13,12 @@ export class MessageList extends React.Component {
   }
 
   componentDidMount() {
-    this.props.socket.on("UpdateClientMessageList", msg => {
-      console.log(msg);
-      this.setState({
-        messages: [...this.state.messages, msg]
-      });
-    });
+    // this.props.socket.on("UpdateClientMessageList", msg => {
+    //   console.log(msg);
+    //   this.setState({
+    //     messages: [...this.state.messages, msg]
+    //   });
+    // });
   }
 
   render() {

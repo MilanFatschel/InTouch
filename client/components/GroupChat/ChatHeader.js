@@ -2,12 +2,12 @@ import React from "react";
 
 import { StyleSheet, Text, View } from "react-native";
 
-export class Header extends React.Component {
+export class ChatHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
         profileName: "The Clown", // TODO: Get this through props
-        profileImage: Image, // TODO: Get this through props
+        // profileImage: Image, // TODO: Get this through props
     };
   }
 
@@ -35,10 +35,6 @@ export class Header extends React.Component {
     return (
       <View style={styles.headerContainer}>
         <View style={styles.profileImageContainer}>
-          <img src={require("./../../../test_images/lasha.jpg")} 
-          width="45" 
-          height="45">
-          </img>
         </View>
         <Text>{this.state.profileName}</Text>
       </View>
