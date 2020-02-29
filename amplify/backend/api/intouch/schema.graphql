@@ -1,0 +1,18 @@
+type Group @model {
+  id: ID!
+  name: String!
+  messages: [Message] @connection(name: "GroupMessages")
+}
+
+type Message @model {
+  id: ID!
+  title: String!
+  group: Group @connection(name: "GroupMessages")
+  comments: [Comment] @connection(name: "MessageComments")
+}
+
+type Comment @model {
+  id: ID!
+  content: String
+  message: Message @connection(name: "MessageComments")
+}
