@@ -12,10 +12,10 @@ export class Message extends React.Component {
     const styles = StyleSheet.create({
       messageText: {
         backgroundColor: "#1E90FF",
-        borderTopRightRadius: "14px",
-        borderTopLeftRadius: "14px",
-        borderBottomLeftRadius: "14px",
-        borderBottomRightRadius: "14px",
+        borderTopRightRadius: 14,
+        borderTopLeftRadius: 14,
+        borderBottomLeftRadius: 14,
+        borderBottomRightRadius: 14,
         padding: "8px",
         color: "#eee",
       },
