@@ -7,7 +7,7 @@ Amplify.configure(config);
 import { withAuthenticator } from "aws-amplify-react-native";
 import { StyleSheet, Text, View } from "react-native";
 
-import { GroupChat } from "./client/components/GroupChat/GroupChat";
+import { ChatRoom } from "./client/components/GroupChat/ChatRoom";
 
 class App extends React.Component {
   async componentDidMount() {
@@ -25,7 +25,7 @@ class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text onPress={this.signOut}>Sign Out</Text>
-        <GroupChat></GroupChat>
+        <ChatRoom></ChatRoom>
       </View>
     );
   }

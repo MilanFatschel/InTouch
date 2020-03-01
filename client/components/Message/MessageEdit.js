@@ -1,5 +1,4 @@
 import React from "react";
-import io from "socket.io-client";
 
 import { TextInput, StyleSheet, View, Button } from "react-native";
 
@@ -15,19 +14,19 @@ export class MessageEdit extends React.Component {
   }
 
   componentDidMount() {
-    let socket = io.connect("http://127.0.0.1:3000");
-    socket.on("connect", () => {
-      this.state.clientId = socket.id;
-    });
-  }
+      // let socket = io.connect("http://127.0.0.1:3000");
+      // socket.on("connect", () => {
+      //   this.state.clientId = socket.id;
+      // });
+    }
 
   onSubmitMessage() {
     if(this.state.textToSend.length > 0)
     {
-      this.props.socket.emit("MessageSentToServer", {
-        text: this.state.textToSend,
-        clientId: this.state.clientId
-      });
+      // this.props.socket.emit("MessageSentToServer", {
+      //   text: this.state.textToSend,
+      //   clientId: this.state.clientId
+      // });
       this.setState({ textToSend: "" });
     }
   }
