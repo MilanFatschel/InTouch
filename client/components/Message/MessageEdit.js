@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TextInput, StyleSheet, View, Button } from "react-native";
+import { TextInput, StyleSheet, View } from "react-native";
 
 export class MessageEdit extends React.Component {
   constructor(props) {
@@ -14,15 +14,14 @@ export class MessageEdit extends React.Component {
   }
 
   componentDidMount() {
-      // let socket = io.connect("http://127.0.0.1:3000");
-      // socket.on("connect", () => {
-      //   this.state.clientId = socket.id;
-      // });
-    }
+    // let socket = io.connect("http://127.0.0.1:3000");
+    // socket.on("connect", () => {
+    //   this.state.clientId = socket.id;
+    // });
+  }
 
   onSubmitMessage() {
-    if(this.state.textToSend.length > 0)
-    {
+    if (this.state.textToSend.length > 0) {
       // this.props.socket.emit("MessageSentToServer", {
       //   text: this.state.textToSend,
       //   clientId: this.state.clientId
@@ -36,23 +35,25 @@ export class MessageEdit extends React.Component {
       editMessageContainer: {
         backgroundColor: "#F5F5F5",
         height: 50,
-        width: 370,
+        width: "100%",
+        padding: 5
       },
       inputBox: {
-        height: 45,
-        width: 370,
+        height: 39,
+        width: "100%",
         borderWidth: 1,
         borderColor: "#DCDCDC",
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         borderBottomLeftRadius: 15,
         borderBottomRightRadius: 15,
-        padding: 10
+        padding: 10,
+        fontSize: 18,
       }
     });
 
     return (
-      <View style = {styles.editMessageContainer}>
+      <View style={styles.editMessageContainer}>
         <TextInput
           style={styles.inputBox}
           placeholder="Enter a Message..."
@@ -62,8 +63,7 @@ export class MessageEdit extends React.Component {
           onSubmitEditing={() => this.onSubmitMessage()}
           onChangeText={textToSend => {
             this.setState({ textToSend });
-          }}
-        />
+          }}/>
       </View>
     );
   }
