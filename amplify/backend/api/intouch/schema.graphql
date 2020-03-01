@@ -1,18 +1,16 @@
-type Group @model {
+type Blog @model {
   id: ID!
   name: String!
-  messages: [Message] @connection(name: "GroupMessages")
+  posts: [Post] @connection(name: "BlogPosts")
 }
-
-type Message @model {
+type Post @model {
   id: ID!
   title: String!
-  group: Group @connection(name: "GroupMessages")
-  comments: [Comment] @connection(name: "MessageComments")
+  blog: Blog @connection(name: "BlogPosts")
+  comments: [Comment] @connection(name: "PostComments")
 }
-
 type Comment @model {
   id: ID!
   content: String
-  message: Message @connection(name: "MessageComments")
+  post: Post @connection(name: "PostComments")
 }

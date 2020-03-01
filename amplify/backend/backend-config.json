@@ -7,22 +7,5 @@
 			"customAuth": false
 		}
 	},
-	"api": {
-		"intouch": {
-			"service": "AppSync",
-			"providerPlugin": "awscloudformation",
-			"output": {
-				"authConfig": {
-					"additionalAuthenticationProviders": [],
-					"defaultAuthentication": {
-						"authenticationType": "API_KEY",
-						"apiKeyConfig": {
-							"description": "api key",
-							"apiKeyExpirationDays": "7"
-						}
-					}
-				}
-			}
-		}
-	}
+	"api": {}
 }
