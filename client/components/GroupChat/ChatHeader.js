@@ -1,13 +1,12 @@
 import React from "react";
 
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 
 export class ChatHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        profileName: "The Clown", // TODO: Get this through props
-        // profileImage: Image, // TODO: Get this through props
+        profileName: "[Profile or Channel Name Here]" // TODO: Get this through props
     };
   }
 
@@ -17,25 +16,19 @@ export class ChatHeader extends React.Component {
   render() {
     const styles= StyleSheet.create({
       headerContainer: {
-        height: 70,
-        width: 370,
+        height: "15%",
+        width: "100%",
         backgroundColor: "#E8E8E8",
         textAlign: "center",
+        textAlignVertical: "center",
         alignItems: "center",
-        padding: 5
+        padding: 40,
+        fontSize: 30
       },
-      profileImageContainer: {
-          width: 45,
-          height: 45,
-          borderRadius: 27.5,
-          overflow: "hidden",
-      }
     });
 
     return (
       <View style={styles.headerContainer}>
-        <View style={styles.profileImageContainer}>
-        </View>
         <Text>{this.state.profileName}</Text>
       </View>
     );
