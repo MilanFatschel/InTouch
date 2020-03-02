@@ -8,20 +8,18 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "aws-amplify": "^2.2.6",
+    "aws-amplify-react": "^3.1.7",
+    "aws-amplify-react-native": "^3.2.2",
     "expo": "~36.0.0",
     "express": "^4.15.5",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
-    "react-native-web": "~0.11.7",
-    "socket.io": "^2.3.0",
-    "socket.io-client": "^2.3.0",
-    "aws-amplify": "^1.1.33",
-    "aws-amplify-react-native": "^2.1.16"
+    "react-native-web": "~0.11.7"
   },
   "devDependencies": {
     "babel-preset-expo": "~8.0.0",
     "@babel/core": "^7.0.0"
-  },
-  "private": true
+  }
 }

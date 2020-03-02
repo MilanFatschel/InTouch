@@ -1,16 +1,21 @@
-type Blog @model {
+type Group @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String!
-  posts: [Post] @connection(name: "BlogPosts")
+  messages: [Message] @connection(name: "GroupMessages")
+  createdAt: String!
 }
-type Post @model {
+
+type Message @model {
   id: ID!
-  title: String!
-  blog: Blog @connection(name: "BlogPosts")
-  comments: [Comment] @connection(name: "PostComments")
+  content: String!
+  group: Group @connection(name: "GroupMessages")
+  comments: [Comment] @connection(name: "MessageComments")
+  createdAt: String!
 }
+
 type Comment @model {
   id: ID!
   content: String
-  post: Post @connection(name: "PostComments")
+  message: Message @connection(name: "MessageComments")
+  createdAt: String!
 }

@@ -6,7 +6,7 @@
         "framework": "react-native",
         "config": {
             "SourceDir": "/",
-            "DistributionDir": "/build",
+            "DistributionDir": "build/",
             "BuildCommand": "npm run-script build",
             "StartCommand": "npm run-script start"
         }
