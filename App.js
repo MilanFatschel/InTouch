@@ -24,7 +24,6 @@ class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text onPress={this.signOut}>Sign Out</Text>
         <ChatRoom></ChatRoom>
       </View>
     );
@@ -44,5 +43,5 @@ const styles = StyleSheet.create({
 });
 
 export default withAuthenticator(App, {
-  includeGreetings: true
+  includeGreetings: false
 });
