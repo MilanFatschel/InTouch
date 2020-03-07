@@ -1,17 +1,50 @@
 import React from "react";
 
 import { Auth } from 'aws-amplify';
-import { StyleSheet, Button, View, Text, TextInput } from "react-native";
+import { StyleSheet, Button, View, Text } from "react-native";
+import { TextField } from 'react-native-material-textfield';
 
 export default class PhoneNumberScreen extends React.Component {
+
+  // constants 
+  phoneNumberLength = 10;
+
   constructor(props) {
     super(props);
     this.state = {
-      phoneNumber: ''
+      phoneNumber: '',
+      isPhoneNumberValidated: false
     };
   }
 
   componentDidMount() {
+  }
+
+  handleOnPhoneNumberTextChange(value) {
+    this.validatePhoneNumber(value)
+  }
+
+  isFormValidated() {
+    return this.state.isPhoneNumberValidated;
+  }
+
+  validatePhoneNumber(phoneNumber) {
+    if (phoneNumber.length != this.phoneNumberLength) {
+      this.state.isPhoneNumberValidated = false;
+    }
+    else {
+      this.state.isPhoneNumberValidated = true;
+    }
+  }
+
+  getValidationErrorText(phoneNumber) {
+    if (phoneNumber.length != this.phoneNumberLength) {
+      errorText = "Your phone number should be 10 digits";
+    }
+    else {
+      errorText = ""
+    }
+    return errorText;
   }
 
   // Send confirmation number though aws
@@ -41,29 +74,37 @@ export default class PhoneNumberScreen extends React.Component {
   render() {
     const styles = StyleSheet.create({
       container: {
-        flex: 1, 
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
+      },
+      contentContainer: {
+        height: '60%',
+        width: '50%'
+      },
+      titleText: {
+        fontSize: 20,
+        fontWeight: 'bold',
       }
     });
     return (
-      <View style = {styles.container}>
-        <View>
-          <Text>What's your phone number?</Text>
-          <Text>PHONE NUMBER</Text>
-          <TextInput
-            placeholder="Phone Number"
-            blurOnSubmit={true}
+      <View style={styles.container}>
+        <Text style={styles.titleText}>What's your phone number?</Text>
+        <View style={styles.contentContainer}>
+          <TextField
+            label="Phone Number"
+            keyboardType="phone-pad"
+            error={this.getValidationErrorText(this.state.phoneNumber)}
             value={this.state.phoneNumber}
-            onChangeText={phoneNumber => {
-              this.setState({ phoneNumber });
-            }}>
-          </TextInput>
+            onChangeText={value => {
+              this.setState({ phoneNumber: value }, this.handleOnPhoneNumberTextChange(value));
+            }} />
+          <Button
+            disabled={!this.isFormValidated()}
+            title="Continue"
+            onPress={this.signUp.bind(this)}
+          />
         </View>
-        <Button
-          title="Continue"
-          onPress={this.signUp.bind(this)}
-        />
       </View>
     );
   }

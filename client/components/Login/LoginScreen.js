@@ -1,15 +1,23 @@
 import React from "react";
 
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
+import { TextField } from 'react-native-material-textfield';
 import { Auth } from 'aws-amplify';
 
 export default class LoginScreen extends React.Component {
+
+  // Constants
+  minUsernameLength = 1;
+  minPasswordLength = 1;
+
   constructor(props) {
     super(props);
     this.state = {
       username: '',
       password: '',
-      user: ''
+      user: '',
+      isUsernameValidated: false,
+      isPasswordValidated: false
     };
   }
 
@@ -27,37 +35,75 @@ export default class LoginScreen extends React.Component {
       .catch(err => console.log('error signing in!: ', err));
   }
 
+  handleOnUsernameTextChange(value) {
+    this.validateUsername(value)
+  }
+
+  handleOnPasswordTextChange(value) {
+    this.validatePassword(value)
+  }
+
+  isFormValidated() {
+    return this.state.isUsernameValidated && this.state.isPasswordValidated;
+  }
+
+  validateUsername(username) {
+    if (username.length < this.minUsernameLength) {
+      this.state.isUsernameValidated = false;
+    }
+    else {
+      this.state.isUsernameValidated = true;
+    }
+  }
+
+  validatePassword(password) {
+    if (password.length < this.minPasswordLength) {
+      this.state.isPasswordValidated = false;
+    }
+    else {
+      this.state.isPasswordValidated = true;
+    }
+  }
+
   render() {
     const styles = StyleSheet.create({
       container: {
-        flex: 1, 
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
+      },
+      contentContainer: {
+        height: '60%',
+        width: '50%'
+      },
+      titleText: {
+        fontSize: 20,
+        fontWeight: 'bold',
       }
     });
     return (
-      <View style = {styles.container}>
-        <Text>Please Login</Text>
-        <TextInput
-          placeholder="Username"
-          blurOnSubmit={true}
-          value={this.state.username}
-          onChangeText={username => {
-            this.setState({ username });
-          }}>
-        </TextInput>
-        <TextInput
-          placeholder="Password"
-          blurOnSubmit={true}
-          value={this.state.password}
-          onChangeText={password => {
-            this.setState({ password });
-          }}>
-        </TextInput>
-        <Button
-          title="Continue"
-          onPress={this.signIn.bind(this)}
-        />
+      <View style={styles.container}>
+        <Text style={styles.titleText}>Log in</Text>
+        <View style={styles.contentContainer}>
+          <TextField
+            label='Username'
+            value={this.state.username}
+            onChangeText={value => {
+              this.setState({ username: value }, this.handleOnUsernameTextChange(value));
+            }} />
+          <TextField
+            label='Password'
+            secureTextEntry={true}
+            value={this.state.password}
+            onChangeText={value => {
+              this.setState({ password: value }, this.handleOnPasswordTextChange(value));
+            }} />
+          <Button
+            title="Sign In"
+            disabled={!this.isFormValidated()}
+            onPress={this.signIn.bind(this)}
+          />
+        </View>
       </View>
     );
   }
