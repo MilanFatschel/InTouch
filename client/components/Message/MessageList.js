@@ -4,8 +4,7 @@ import { StyleSheet, ScrollView, View } from "react-native";
 import { Message } from "./Message";
 
 import Amplify, { API, graphqlOperation } from "aws-amplify";
-import { withAuthenticator } from "aws-amplify-react-native";
-import aws_exports from "./../../../aws-exports"; // specify the location of aws-exports.js file on your project
+import aws_exports from "./../../../aws-exports";
 Amplify.configure(aws_exports);
 
 const readMessage = `query listMessages{

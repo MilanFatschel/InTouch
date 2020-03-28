@@ -2,8 +2,7 @@ import React from "react";
 import { TextInput, StyleSheet, View } from "react-native";
 
 import Amplify, { API, graphqlOperation } from "aws-amplify";
-import { withAuthenticator } from "aws-amplify-react-native";
-import aws_exports from "./../../../aws-exports"; // specify the location of aws-exports.js file on your project
+import aws_exports from "./../../../aws-exports";
 Amplify.configure(aws_exports);
 
 const createMessage = `mutation createMessage($message: String!){
@@ -22,9 +21,14 @@ export class MessageEdit extends React.Component {
 
     this.state = {
       id: "",
-      value: ""
+      value: "",
+      currentUsername: ""
     };
     this.onSubmitMessage = this.onSubmitMessage.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ currentUsername: this.props.currentUserDetails.username });
   }
 
   async onSubmitMessage() {
