@@ -38,7 +38,7 @@ export default class PhoneNumberScreen extends React.Component {
   }
 
   getValidationErrorText(phoneNumber) {
-    if (phoneNumber.length != this.phoneNumberLength) {
+    if (phoneNumber.length != this.phoneNumberLength && phoneNumber.length != 0) {
       errorText = "Your phone number should be 10 digits";
     }
     else {
