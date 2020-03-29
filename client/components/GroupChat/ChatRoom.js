@@ -2,7 +2,6 @@ import React from "react";
 import Amplify from "@aws-amplify/core";
 import config from "../../../aws-exports";
 import { Auth } from 'aws-amplify';
-import API, { graphqlOperation } from "@aws-amplify/api";
 import { KeyboardAvoidingView, StyleSheet } from 'react-native';
 
 import { ChatHeader } from "./ChatHeader";
@@ -10,22 +9,6 @@ import { MessageList } from "./../Message/MessageList"
 import { MessageEdit } from "./../Message/MessageEdit"
 
 Amplify.configure(config);
-
-const listMessages = `
-  query {
-    listMessage {
-      items {
-        id
-        user
-        message
-      }
-    }
-  }
-`;
-
-const createMessage = `
-  mu
-`;
 
 export default class ChatRoom extends React.Component {
   constructor(props) {
@@ -38,8 +21,6 @@ export default class ChatRoom extends React.Component {
 
   componentDidMount() {
     this.getCurrentUserDetails();
-    // console.log("ChatRoom User object: " + this.state.currentUserDetails)
-    // console.log("ChatRoom User name: " + this.state.currentUserDetails.username)
   }
 
   getCurrentUserDetails() {
@@ -70,5 +51,3 @@ export default class ChatRoom extends React.Component {
     );
   }
 }
-
-

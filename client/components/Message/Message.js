@@ -1,5 +1,4 @@
 import React from "react";
-import Auth from "@aws-amplify/auth";
 
 import { View, StyleSheet, Text } from "react-native";
 
