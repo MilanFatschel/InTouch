@@ -13,6 +13,8 @@ export default class PhoneNumberScreen extends React.Component {
     super(props);
     this.state = {
       phoneNumber: '',
+      errorText: '',
+      isSignUpError: false,
       isPhoneNumberValidated: false
     };
   }
@@ -38,7 +40,10 @@ export default class PhoneNumberScreen extends React.Component {
   }
 
   getValidationErrorText(phoneNumber) {
-    if (phoneNumber.length != this.phoneNumberLength && phoneNumber.length != 0) {
+    if(phoneNumber.length == 0) {
+      errorText = "";
+    }
+    else if (phoneNumber.length != this.phoneNumberLength) {
       errorText = "Your phone number should be 10 digits";
     }
     else {
@@ -68,7 +73,7 @@ export default class PhoneNumberScreen extends React.Component {
             phoneNumber: this.state.phoneNumber
           })
       })
-      .catch(err => console.log('error signing up!: ', err));
+      .catch(err => this.setState({errorText: err.message, isSignUpError: true}));
   }
 
   render() {
@@ -85,8 +90,18 @@ export default class PhoneNumberScreen extends React.Component {
       titleText: {
         fontSize: 20,
         fontWeight: 'bold',
+      },
+      errorText: {
+        color: 'red'
       }
     });
+
+    const isSignUpError = this.state.isSignUpError;
+    let errorTextPlaceHolder;
+    if (isSignUpError) {
+      errorTextPlaceHolder= <Text style={styles.errorText}>{this.state.errorText}</Text>
+    }
+
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>What's your phone number?</Text>
@@ -99,9 +114,10 @@ export default class PhoneNumberScreen extends React.Component {
             onChangeText={value => {
               this.setState({ phoneNumber: value }, this.handleOnPhoneNumberTextChange(value));
             }} />
+          {errorTextPlaceHolder}
           <Button
             disabled={!this.isFormValidated()}
-            title="Continue"
+            title="Send Code to Email"
             onPress={this.signUp.bind(this)}
           />
         </View>

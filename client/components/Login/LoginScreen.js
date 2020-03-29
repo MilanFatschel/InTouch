@@ -15,7 +15,8 @@ export default class LoginScreen extends React.Component {
     this.state = {
       username: '',
       password: '',
-      user: '',
+      errorText: '',
+      isLoginError: false,
       isUsernameValidated: false,
       isPasswordValidated: false
     };
@@ -32,7 +33,7 @@ export default class LoginScreen extends React.Component {
         console.log('successful sign in!');
         this.props.navigation.replace('ChatRoom')
       })
-      .catch(err => console.log('error signing in!: ', err));
+      .catch(err => this.setState({errorText: err.message, isLoginError: true}));
   }
 
   handleOnUsernameTextChange(value) {
@@ -79,8 +80,16 @@ export default class LoginScreen extends React.Component {
       titleText: {
         fontSize: 20,
         fontWeight: 'bold',
+      },
+      errorText: {
+        color: 'red'
       }
     });
+    const isLoginError = this.state.isLoginError;
+    let errorTextPlaceHolder;
+    if (isLoginError) {
+      errorTextPlaceHolder= <Text style={styles.errorText}>{this.state.errorText}</Text>
+    }
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>Log in</Text>
@@ -98,6 +107,7 @@ export default class LoginScreen extends React.Component {
             onChangeText={value => {
               this.setState({ password: value }, this.handleOnPasswordTextChange(value));
             }} />
+          {errorTextPlaceHolder}
           <Button
             title="Sign In"
             disabled={!this.isFormValidated()}
