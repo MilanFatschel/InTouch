@@ -18,6 +18,8 @@ export default class Confirmation extends React.Component {
       password: '',
       email: '',
       confirmationCode: '',
+      errorText: '',
+      isConfirmationError: false,
       isConfirmationCodeValidated: false
     };
   }
@@ -40,7 +42,7 @@ export default class Confirmation extends React.Component {
         console.log('successful confirm sign up!')
         this.props.navigation.navigate('Welcome')
       })
-      .catch(err => console.log('error confirming signing up!: ', err));
+      .catch(err => this.setState({errorText: err.message, isConfirmationError: true}));
   }
 
   handleOnConfirmationCodeTextChange(value) {
@@ -74,11 +76,19 @@ export default class Confirmation extends React.Component {
       titleText: {
         fontSize: 20,
         fontWeight: 'bold',
+      },
+      errorText: {
+        color: 'red'
       }
     });
+    const isConfirmationError = this.state.isConfirmationError;
+    let errorTextPlaceHolder;
+    if (isConfirmationError) {
+      errorTextPlaceHolder= <Text style={styles.errorText}>{this.state.errorText}</Text>
+    }
     return (
       <View style={styles.container}>
-        <Text style={styles.titleText}>Enter your confirmation code</Text>
+        <Text style={styles.titleText}>Confirmation code has been sent!</Text>
         <View style={styles.contentContainer}>
           <TextField
             label='Confirmation Code'
@@ -87,6 +97,7 @@ export default class Confirmation extends React.Component {
             onChangeText={confirmationCode => {
               this.setState({ confirmationCode }, this.handleOnConfirmationCodeTextChange(confirmationCode));
             }} />
+          {errorTextPlaceHolder}
           <Button
             title="Continue"
             disabled={!this.isFormValidated()}

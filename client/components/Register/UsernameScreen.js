@@ -42,7 +42,10 @@ export default class UsernameScreen extends React.Component {
   }
 
   getValidationErrorText(username) {
-    if (username.length < this.minUsernameLength && username.length != 0) {
+    if(username.length == 0) {
+      errorText = ""
+    }
+    else if (username.length < this.minUsernameLength) {
       errorText = "Username must be at least 3 characters";
     }
     else if (username.length > this.maxUsernameLength) {
