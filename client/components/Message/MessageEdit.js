@@ -34,13 +34,13 @@ export class MessageEdit extends React.Component {
   async onSubmitMessage() {
     const message = { message: this.state.value };
     await API.graphql(graphqlOperation(createMessage, message));
-    this.listNotes();
+    this.listMessages();
     this.setState({ value: "" });
   }
 
-  async listNotes() {
-    const notes = await API.graphql(graphqlOperation(readNote));
-    this.setState({ notes: notes.data.listNotes.items });
+  async listMessages() {
+    const messages = await API.graphql(graphqlOperation(readMessage));
+    this.setState({ messages: messages.data.listMessages.items });
   }
 
   render() {
