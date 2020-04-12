@@ -2,38 +2,32 @@
 // this is an auto generated file. This will be overwritten
 
 export const createMessage = /* GraphQL */ `
-  mutation CreateMessage(
-    $input: CreateMessageInput!
-    $condition: ModelMessageConditionInput
-  ) {
-    createMessage(input: $input, condition: $condition) {
-      id
-      message
-      owner
+  mutation CreateMessage($input: CreateMessageInput!) {
+    createMessage(input: $input) {
+      ID
+      content
+      author
+      createdAt
     }
   }
 `;
 export const updateMessage = /* GraphQL */ `
-  mutation UpdateMessage(
-    $input: UpdateMessageInput!
-    $condition: ModelMessageConditionInput
-  ) {
-    updateMessage(input: $input, condition: $condition) {
-      id
-      message
-      owner
+  mutation UpdateMessage($input: UpdateMessageInput!) {
+    updateMessage(input: $input) {
+      ID
+      content
+      author
+      createdAt
     }
   }
 `;
 export const deleteMessage = /* GraphQL */ `
-  mutation DeleteMessage(
-    $input: DeleteMessageInput!
-    $condition: ModelMessageConditionInput
-  ) {
-    deleteMessage(input: $input, condition: $condition) {
-      id
-      message
-      owner
+  mutation DeleteMessage($input: DeleteMessageInput!) {
+    deleteMessage(input: $input) {
+      ID
+      content
+      author
+      createdAt
     }
   }
 `;

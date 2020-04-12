@@ -15,7 +15,8 @@ export default class PhoneNumberScreen extends React.Component {
       phoneNumber: '',
       errorText: '',
       isSignUpError: false,
-      isPhoneNumberValidated: false
+      isPhoneNumberValidated: false,
+      phoneErrorText: ''
     };
   }
 
@@ -41,15 +42,15 @@ export default class PhoneNumberScreen extends React.Component {
 
   getValidationErrorText(phoneNumber) {
     if(phoneNumber.length == 0) {
-      errorText = "";
+      this.state.phoneErrorText = "";
     }
     else if (phoneNumber.length != this.phoneNumberLength) {
-      errorText = "Your phone number should be 10 digits";
+      this.state.phoneErrorText = "Your phone number should be 10 digits";
     }
     else {
-      errorText = ""
+      this.state.phoneErrorText = ""
     }
-    return errorText;
+    return this.state.phoneErrorText;
   }
 
   // Send confirmation number though aws

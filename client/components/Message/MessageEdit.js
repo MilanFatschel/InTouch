@@ -3,44 +3,42 @@ import { TextInput, StyleSheet, View } from "react-native";
 
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import aws_exports from "./../../../aws-exports";
+import * as mutations from '../../../src/graphql/mutations';
+
 Amplify.configure(aws_exports);
 
-const createMessage = `mutation createMessage($message: String!){
-  createMessage(input:{
-    message: $message
-  }){
-    __typename
-    id
-    message
-  }
-}`;
+
 
 export class MessageEdit extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      id: "",
-      value: "",
-      currentUsername: ""
+      messageToSend: {
+        ID: String,
+        content: String,
+        author: String,
+        createdAt: String
+      },
+      messageInputText: String,
     };
-    this.onSubmitMessage = this.onSubmitMessage.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ currentUsername: this.props.currentUserDetails.username });
   }
 
   async onSubmitMessage() {
-    const message = { message: this.state.value };
-    await API.graphql(graphqlOperation(createMessage, message));
-    this.listMessages();
-    this.setState({ value: "" });
-  }
+    this.state.messageToSend.ID = 'testID';
+    this.state.messageToSend.author = this.props.currentUserDetails.username;
+    this.state.messageToSend.content = this.state.messageInputText;
+    this.state.messageToSend.createdAt = '12345';
 
-  async listMessages() {
-    const messages = await API.graphql(graphqlOperation(readMessage));
-    this.setState({ messages: messages.data.listMessages.items });
+    const params = {
+      input: this.state.messageToSend
+    };
+
+    await API.graphql(graphqlOperation(mutations.createMessage, params));
+    this.setState({ messageInputText: "" });
   }
 
   render() {
@@ -72,10 +70,10 @@ export class MessageEdit extends React.Component {
           placeholder="Enter a Message..."
           multiline={true}
           blurOnSubmit={true}
-          value={this.state.value}
+          value={this.state.messageInputText}
           onSubmitEditing={() => this.onSubmitMessage()}
-          onChangeText={value => {
-            this.setState({ value });
+          onChangeText={messageInputText => {
+            this.setState({ messageInputText });
           }}
         />
       </View>

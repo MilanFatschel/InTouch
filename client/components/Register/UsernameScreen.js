@@ -7,13 +7,13 @@ export default class UsernameScreen extends React.Component {
 
   // Constants
   minUsernameLength = 3;
-  maxUsernameLength = 15;
+  maxUsernameLength = 50;
 
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      usernameErrorText: '',
+      errorText: '',
       isUsernameValidated: false,
     };
   }
@@ -42,19 +42,20 @@ export default class UsernameScreen extends React.Component {
   }
 
   getValidationErrorText(username) {
+
     if(username.length == 0) {
-      errorText = ""
+      this.state.errorText = ""
     }
     else if (username.length < this.minUsernameLength) {
-      errorText = "Username must be at least 3 characters";
+      this.state.errorText = "Username must be at least 3 characters";
     }
     else if (username.length > this.maxUsernameLength) {
-      errorText = "Username must be less than 15 characters"
+      this.state.errorText = "Username must be less than 50 characters"
     }
     else {
-      errorText = ""
+      this.state.errorText = ""
     }
-    return errorText;
+    return this.state.errorText;
   }
 
   render() {

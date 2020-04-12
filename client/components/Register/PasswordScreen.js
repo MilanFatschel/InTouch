@@ -12,7 +12,8 @@ export default class PasswordScreen extends React.Component {
     super(props);
     this.state = {
       password: '',
-      isPasswordValidated: false
+      isPasswordValidated: false,
+      errorText: ''
     };
   }
 
@@ -38,15 +39,15 @@ export default class PasswordScreen extends React.Component {
 
   getValidationErrorText(password) {
     if(password.length == 0) {
-      errorText = "";
+      this.state.errorText = "";
     }
     else if (password.length < this.minPasswordLength) {
-      errorText = "Password must be at least 8 characters";
+      this.state.errorText = "Password must be at least 8 characters";
     }
     else {
-      errorText = ""
+      this.state.errorText = ""
     }
-    return errorText;
+    return this.state.errorText;
   }
 
   render() {

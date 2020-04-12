@@ -5,17 +5,9 @@ import { Message } from "./Message";
 
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import aws_exports from "./../../../aws-exports";
+import * as queries from '../../../src/graphql/queries'
 Amplify.configure(aws_exports);
 
-const readMessage = `query listMessages{
-  listMessages{
-    items{
-      __typename
-      id
-      message
-    }
-  }
-}`;
 
 export class MessageList extends React.Component {
   constructor(props) {
@@ -26,13 +18,9 @@ export class MessageList extends React.Component {
   }
 
   async componentDidMount() {
-    const messages = await API.graphql(graphqlOperation(readMessage));
-    this.setState({ messages: messages.data.listMessages.items });
-  }
-
-  async listMessages() {
-    const notes = await API.graphql(graphqlOperation(readMessage));
-    this.setState({ messages: messages.data.listMessages.items });
+    const messagesFromServer = await API.graphql(graphqlOperation(queries.listMessages));
+    console.log(messagesFromServer);
+    // this.setState({ messages: messagesFromServer.data.listMessages});
   }
 
   render() {
