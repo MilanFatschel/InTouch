@@ -1,5 +1,11 @@
 {
     "AppSyncApiName": "InTouchAPI",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": "false"
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authintouch251e8cdc",
+            "Outputs.UserPoolId"
+        ]
+    }
 }

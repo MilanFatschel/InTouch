@@ -6,7 +6,7 @@
 			"dependsOn": [],
 			"customAuth": false
 		},
-		"intouch158243a9": {
+		"intouch251e8cdc": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": [],
@@ -37,10 +37,9 @@
 				"authConfig": {
 					"additionalAuthenticationProviders": [],
 					"defaultAuthentication": {
-						"authenticationType": "API_KEY",
-						"apiKeyConfig": {
-							"description": "",
-							"apiKeyExpirationDays": "365"
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authintouch251e8cdc"
 						}
 					}
 				}

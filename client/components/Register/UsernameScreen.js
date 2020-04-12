@@ -7,7 +7,7 @@ export default class UsernameScreen extends React.Component {
 
   // Constants
   minUsernameLength = 3;
-  maxUsernameLength = 50;
+  maxUsernameLength = 15;
 
   constructor(props) {
     super(props);
