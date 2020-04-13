@@ -1,42 +1,19 @@
 {
-    "master": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-intouch-master-81223-authRole",
-            "UnauthRoleArn": "arn:aws:iam::164934875985:role/amplify-intouch-master-81223-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::164934875985:role/amplify-intouch-master-81223-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-intouch-master-81223-deployment",
-            "UnauthRoleName": "amplify-intouch-master-81223-unauthRole",
-            "StackName": "amplify-intouch-master-81223",
-            "StackId": "arn:aws:cloudformation:us-east-1:164934875985:stack/amplify-intouch-master-81223/7636e1b0-5c87-11ea-9c9c-0a55488d44ba",
-            "AmplifyAppId": "d37lugmfzj8kyx"
-        },
-        "categories": {
-            "auth": {
-                "intouchb336f70b": {},
-                "intouch0775f39e": {},
-                "intouch78ef018e": {},
-                "intouch158243a9": {},
-                "intouch387952a7": {}
-            }
-        }
-    },
     "develop": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-intouch-develop-143239-authRole",
-            "UnauthRoleArn": "arn:aws:iam::164934875985:role/amplify-intouch-develop-143239-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::164934875985:role/amplify-intouch-develop-143239-authRole",
+            "AuthRoleName": "amplify-intouch-develop-194559-authRole",
+            "UnauthRoleArn": "arn:aws:iam::164934875985:role/amplify-intouch-develop-194559-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::164934875985:role/amplify-intouch-develop-194559-authRole",
             "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-intouch-develop-143239-deployment",
-            "UnauthRoleName": "amplify-intouch-develop-143239-unauthRole",
-            "StackName": "amplify-intouch-develop-143239",
-            "StackId": "arn:aws:cloudformation:us-east-1:164934875985:stack/amplify-intouch-develop-143239/fdf1ea30-7ceb-11ea-af79-0e0e50fbc697",
-            "AmplifyAppId": "d37lugmfzj8kyx"
+            "DeploymentBucketName": "amplify-intouch-develop-194559-deployment",
+            "UnauthRoleName": "amplify-intouch-develop-194559-unauthRole",
+            "StackName": "amplify-intouch-develop-194559",
+            "StackId": "arn:aws:cloudformation:us-east-1:164934875985:stack/amplify-intouch-develop-194559/c425c1b0-7d17-11ea-9e17-12c1d85cca19",
+            "AmplifyAppId": "d6nzdjlcjycjx"
         },
         "categories": {
             "auth": {
-                "intouchb336f70b": {},
-                "intouch251e8cdc": {}
+                "intouch39866055": {}
             }
         }
     }

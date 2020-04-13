@@ -2,14 +2,15 @@
 
 const awsmobile = {
     "aws_project_region": "us-east-1",
-    "aws_cognito_identity_pool_id": "us-east-1:bf472a6a-0130-4583-8245-6beb1a51dd2d",
-    "aws_cognito_region": "us-east-1",
-    "aws_user_pools_id": "us-east-1_bdsgswY4N",
-    "aws_user_pools_web_client_id": "5ju5t79hkb37o60a5b3v19p9c3",
-    "oauth": {},
-    "aws_appsync_graphqlEndpoint": "https://d6fugsxlmjbxvezxujc446g3ea.appsync-api.us-east-1.amazonaws.com/graphql",
+    "aws_appsync_graphqlEndpoint": "https://fwbjcsyiqzaatde2jzgem4u7ce.appsync-api.us-east-1.amazonaws.com/graphql",
     "aws_appsync_region": "us-east-1",
-    "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS"
+    "aws_appsync_authenticationType": "API_KEY",
+    "aws_appsync_apiKey": "da2-sjkrxz7iujeglmxm6bt6e4n6x4",
+    "aws_cognito_identity_pool_id": "us-east-1:517591e6-eaac-4052-972a-9985dd2793bc",
+    "aws_cognito_region": "us-east-1",
+    "aws_user_pools_id": "us-east-1_yxDc97i8o",
+    "aws_user_pools_web_client_id": "7fg19mmf1mbmlc5nhj72ep2e7c",
+    "oauth": {}
 };
 
 

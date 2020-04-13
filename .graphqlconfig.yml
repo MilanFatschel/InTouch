@@ -1,5 +1,5 @@
 projects:
-  InTouchAPI-develop:
+  ITAPI:
     schemaPath: src/graphql/schema.json
     includes:
       - src/graphql/**/*.js
@@ -8,10 +8,10 @@ projects:
     extensions:
       amplify:
         codeGenTarget: javascript
-        generatedFileName: ''
+        generatedFileName: src/API.js
         docsFilePath: src/graphql
         region: us-east-1
-        apiId: th3rlrvc2rgulgzv67fhwc4l5m
+        apiId: posez2z22zarjfen6r33k52eou
         maxDepth: 2
 extensions:
   amplify:
