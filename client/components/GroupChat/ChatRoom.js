@@ -5,8 +5,8 @@ import { Auth } from 'aws-amplify';
 import { KeyboardAvoidingView, StyleSheet } from 'react-native';
 
 import { ChatHeader } from "./ChatHeader";
-import { MessageList } from "./../Message/MessageList"
-import { MessageEdit } from "./../Message/MessageEdit"
+import { MessageList } from "../Message/MessageList"
+import { MessageEdit } from "../Message/MessageEdit"
 
 Amplify.configure(config);
 

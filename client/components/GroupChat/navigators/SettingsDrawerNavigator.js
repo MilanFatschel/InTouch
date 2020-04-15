@@ -1,13 +1,13 @@
-import { createDrawerNavigator } from 'react-navigation'
+import { createDrawerNavigator } from 'react-navigation-drawer'
 import { createAppContainer } from 'react-navigation'
 
-import { ChatRoom } from '../ChatRoom'
+import { BaseScreen } from '../../Base/BaseScreen'
 import { ProfileScreen } from '../../Settings/ProfileScreen'
 import { SettingsScreen} from '../../Settings/SettingsScreen'
 
 const SettingsDrawerNavigator = createDrawerNavigator({
     Chat : {
-        screen: ChatRoom,
+        screen: BaseScreen
     },
     Profile: {
         screen: ProfileScreen
