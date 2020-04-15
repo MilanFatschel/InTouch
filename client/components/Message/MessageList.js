@@ -9,7 +9,6 @@ import * as queries from '../../../src/graphql/queries'
 import * as subscriptions from '../../../src/graphql/subscriptions'
 Amplify.configure(aws_exports);
 
-
 export class MessageList extends React.Component {
   constructor(props) {
     super(props);
@@ -25,8 +24,16 @@ export class MessageList extends React.Component {
     const subscription = API.graphql(
       graphqlOperation(subscriptions.onCreateMessage)
     ).subscribe({
-      next: (data) => console.log(data)
+      next: (event) => {
+        this.onRecievedNewMessage(event.value.data.onCreateMessage);
+      }
     });
+  }
+
+  onRecievedNewMessage(newMessage) {
+    this.state.messages.push(newMessage);
+    this.setState({messages: this.state.messages});
+    this.refs.scrollViewer.scrollToEnd({animated:true});
   }
 
   render() {
@@ -45,7 +52,9 @@ export class MessageList extends React.Component {
     ));
 
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView 
+      style={styles.container}
+      ref = 'scrollViewer'>
         <View>{data}</View>
       </ScrollView>
     );

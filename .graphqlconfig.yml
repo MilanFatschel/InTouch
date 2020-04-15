@@ -1,6 +1,6 @@
 projects:
   ITAPI:
-    schemaPath: src/graphql/schema.json
+    schemaPath: amplify/backend/api/ITAPI/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:
@@ -8,10 +8,10 @@ projects:
     extensions:
       amplify:
         codeGenTarget: javascript
-        generatedFileName: src/API.js
+        generatedFileName: ''
         docsFilePath: src/graphql
         region: us-east-1
-        apiId: posez2z22zarjfen6r33k52eou
+        apiId: null
         maxDepth: 2
 extensions:
   amplify:

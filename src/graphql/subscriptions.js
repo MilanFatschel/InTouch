@@ -2,18 +2,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateMessage = /* GraphQL */ `
-  subscription OnCreateMessage(
-    $ID: String
-    $content: String
-    $author: String
-    $createdAt: String
-  ) {
-    onCreateMessage(
-      ID: $ID
-      content: $content
-      author: $author
-      createdAt: $createdAt
-    ) {
+  subscription OnCreateMessage {
+    onCreateMessage {
       ID
       content
       author
@@ -22,18 +12,8 @@ export const onCreateMessage = /* GraphQL */ `
   }
 `;
 export const onUpdateMessage = /* GraphQL */ `
-  subscription OnUpdateMessage(
-    $ID: String
-    $content: String
-    $author: String
-    $createdAt: String
-  ) {
-    onUpdateMessage(
-      ID: $ID
-      content: $content
-      author: $author
-      createdAt: $createdAt
-    ) {
+  subscription OnUpdateMessage {
+    onUpdateMessage {
       ID
       content
       author
@@ -42,18 +22,8 @@ export const onUpdateMessage = /* GraphQL */ `
   }
 `;
 export const onDeleteMessage = /* GraphQL */ `
-  subscription OnDeleteMessage(
-    $ID: String
-    $content: String
-    $author: String
-    $createdAt: String
-  ) {
-    onDeleteMessage(
-      ID: $ID
-      content: $content
-      author: $author
-      createdAt: $createdAt
-    ) {
+  subscription OnDeleteMessage {
+    onDeleteMessage {
       ID
       content
       author
