@@ -10,7 +10,7 @@ import { MessageEdit } from "./../Message/MessageEdit"
 
 Amplify.configure(config);
 
-export default class ChatRoom extends React.Component {
+export class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +42,7 @@ export default class ChatRoom extends React.Component {
 
     return (
       <React.Fragment>
-        <ChatHeader></ChatHeader>
+        <ChatHeader navigation={this.props.navigation}></ChatHeader>
         <KeyboardAvoidingView style={styles.keyboardAvoidContainer} behavior="padding">
           <MessageList></MessageList>
           <MessageEdit currentUserDetails={this.state.currentUserDetails}></MessageEdit>

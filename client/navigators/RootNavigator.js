@@ -9,7 +9,7 @@ import Password from "../components/Register/PasswordScreen"
 import Email from "../components/Register/EmailScreen"
 import PhoneNumber from "../components/Register/PhoneNumberScreen"
 import Confirmation from "../components/Register/ConfirmationScreen"
-import ChatRoom from "../components/GroupChat/ChatRoom"
+import SettingsDrawerNavigator from "../components/GroupChat/navigators/SettingsDrawerNavigator";
 
 const NavigationStack = createStackNavigator({
     Welcome: {
@@ -36,8 +36,8 @@ const NavigationStack = createStackNavigator({
     Confirmation: {
         screen: Confirmation
     },
-    ChatRoom: {
-        screen: ChatRoom
+    ChatNavigator: {
+        screen: SettingsDrawerNavigator
     }
 },
 {

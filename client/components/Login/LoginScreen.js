@@ -31,7 +31,7 @@ export default class LoginScreen extends React.Component {
       .then(user => {
         this.setState({ user });
         console.log('successful sign in!');
-        this.props.navigation.replace('ChatRoom')
+        this.props.navigation.replace('ChatNavigator')
       })
       .catch(err => this.setState({errorText: err.message, isLoginError: true}));
   }

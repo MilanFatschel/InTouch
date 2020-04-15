@@ -10,6 +10,7 @@
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.7",
     "@react-native-community/netinfo": "^5.5.1",
+    "@react-navigation/drawer": "^5.4.1",
     "aws-amplify": "^2.2.6",
     "aws-amplify-react": "^3.1.7",
     "aws-amplify-react-native": "^3.2.2",
@@ -21,10 +22,12 @@
     "react-native-elements": "^1.2.7",
     "react-native-gesture-handler": "^1.6.0",
     "react-native-material-textfield": "^0.16.1",
+    "react-native-reanimated": "^1.8.0",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.2.0",
     "react-native-web": "~0.11.7",
     "react-navigation": "^4.2.2",
+    "react-navigation-drawer": "^2.4.11",
     "react-navigation-stack": "^2.2.3",
     "uuid": "^7.0.3"
   },

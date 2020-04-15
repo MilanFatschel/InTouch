@@ -1,6 +1,7 @@
 import React from "react";
 
 import { StyleSheet, Text, View, Image } from "react-native";
+import { MaterialIcons } from '@expo/vector-icons'
 
 export class ChatHeader extends React.Component {
   constructor(props) {
@@ -11,6 +12,10 @@ export class ChatHeader extends React.Component {
   }
 
   componentDidMount() {
+  }
+
+  onSettingsDrawerClicked() {
+    this.props.navigation.toggleDrawer();
   }
 
   render() {
@@ -25,10 +30,17 @@ export class ChatHeader extends React.Component {
         padding: 40,
         fontSize: 30
       },
+      settingsNavigationIconContainer: {
+        position: 'absolute',
+        left: 16
+      }
     });
 
     return (
       <View style={styles.headerContainer}>
+        <MaterialIcons name = 'menu'
+        onPress = {this.onSettingsDrawerClicked}
+        />
         <Text>{this.state.profileName}</Text>
       </View>
     );
