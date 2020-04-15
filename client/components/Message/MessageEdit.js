@@ -1,46 +1,59 @@
 import React from "react";
 import { TextInput, StyleSheet, View } from "react-native";
+import { v4 as uuidv4 } from 'uuid';
 
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import aws_exports from "./../../../aws-exports";
+import * as mutations from '../../../src/graphql/mutations';
+
 Amplify.configure(aws_exports);
 
-const createMessage = `mutation createMessage($message: String!){
-  createMessage(input:{
-    message: $message
-  }){
-    __typename
-    id
-    message
-  }
-}`;
+
 
 export class MessageEdit extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      id: "",
-      value: "",
-      currentUsername: ""
+      messageToSend: {
+        ID: String,
+        content: String,
+        author: String,
+        createdAt: String
+      },
+      messageInputText: String,
+      messageTimeSection: String
     };
-    this.onSubmitMessage = this.onSubmitMessage.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ currentUsername: this.props.currentUserDetails.username });
   }
 
   async onSubmitMessage() {
-    const message = { message: this.state.value };
-    await API.graphql(graphqlOperation(createMessage, message));
-    this.listMessages();
-    this.setState({ value: "" });
+    this.state.messageToSend.ID = uuidv4();
+    this.state.messageToSend.author = this.props.currentUserDetails.username;
+    this.state.messageToSend.content = this.state.messageInputText;
+    this.state.messageToSend.createdAt = this.getTimeString();
+
+    const params = {
+      input: this.state.messageToSend
+    };
+
+    await API.graphql(graphqlOperation(mutations.createMessage, params));
+    this.setState({ messageInputText: "" });
   }
 
-  async listMessages() {
-    const messages = await API.graphql(graphqlOperation(readMessage));
-    this.setState({ messages: messages.data.listMessages.items });
+  // Get the current time for the message
+  getTimeString() {
+    var hours = new Date().getHours();
+    var min = new Date().getMinutes();
+
+    if(hours < 12)  this.state.messageTimeSection = 'AM';
+    else this.state.messageTimeSection = 'PM';
+
+    if(hours > 12) hours = hours - 12;
+    
+    return hours + ':' + min + ' ' + this.state.messageTimeSection;
   }
 
   render() {
@@ -72,10 +85,10 @@ export class MessageEdit extends React.Component {
           placeholder="Enter a Message..."
           multiline={true}
           blurOnSubmit={true}
-          value={this.state.value}
+          value={this.state.messageInputText}
           onSubmitEditing={() => this.onSubmitMessage()}
-          onChangeText={value => {
-            this.setState({ value });
+          onChangeText={messageInputText => {
+            this.setState({ messageInputText });
           }}
         />
       </View>

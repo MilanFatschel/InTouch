@@ -31,6 +31,9 @@ export class Message extends React.Component {
       },
       nameSenderContainer: {
         fontSize: 10
+      },
+      createdAtContainer: {
+        fontSize: 10
       }
     });
 
@@ -38,8 +41,9 @@ export class Message extends React.Component {
       <View style={styles.messageContainer}>
         <Text style={styles.messageSenderIconContainer}>[ICON]</Text>
         <View style={styles.messageContentContainer}>
-          <Text style={styles.nameSenderContainer}>{ /*this.props.message.username*/}</Text>
-          <Text style={styles.messageText}>{this.props.message.message}</Text>
+          <Text style={styles.nameSenderContainer}>{ this.props.message.author}</Text>
+          <Text style={styles.messageText}>{this.props.message.content}</Text>
+          <Text style={styles.createdAtContainer}>{this.props.message.createdAt}</Text>
         </View>
       </View>
     );
