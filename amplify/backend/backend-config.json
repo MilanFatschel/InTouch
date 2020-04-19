@@ -1,6 +1,6 @@
 {
 	"auth": {
-		"intouch39866055": {
+		"intouchc2c54fb4": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": [],

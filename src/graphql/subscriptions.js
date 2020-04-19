@@ -2,9 +2,10 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateMessage = /* GraphQL */ `
-  subscription OnCreateMessage {
-    onCreateMessage {
+  subscription OnCreateMessage($chatID: String) {
+    onCreateMessage(chatID: $chatID) {
       ID
+      chatID
       content
       author
       createdAt
@@ -12,9 +13,10 @@ export const onCreateMessage = /* GraphQL */ `
   }
 `;
 export const onUpdateMessage = /* GraphQL */ `
-  subscription OnUpdateMessage {
-    onUpdateMessage {
+  subscription OnUpdateMessage($ID: String) {
+    onUpdateMessage(ID: $ID) {
       ID
+      chatID
       content
       author
       createdAt
@@ -22,9 +24,10 @@ export const onUpdateMessage = /* GraphQL */ `
   }
 `;
 export const onDeleteMessage = /* GraphQL */ `
-  subscription OnDeleteMessage {
-    onDeleteMessage {
+  subscription OnDeleteMessage($ID: String) {
+    onDeleteMessage(ID: $ID) {
       ID
+      chatID
       content
       author
       createdAt

@@ -5,6 +5,7 @@ export const getMessage = /* GraphQL */ `
   query GetMessage($ID: String!) {
     getMessage(ID: $ID) {
       ID
+      chatID
       content
       author
       createdAt
@@ -20,6 +21,7 @@ export const listMessages = /* GraphQL */ `
     listMessages(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         ID
+        chatID
         content
         author
         createdAt

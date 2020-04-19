@@ -10,25 +10,30 @@ import { MessageEdit } from "./../Message/MessageEdit"
 
 Amplify.configure(config);
 
-export default class ChatRoom extends React.Component {
+export class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUserDetails: Object
+      currentUserDetails: Object,
+      currentChatDetails: Object
     };
-    this.getCurrentUserDetails = this.getCurrentUserDetails.bind(this);
   }
 
   componentDidMount() {
-    this.getCurrentUserDetails();
+    this.setCurrentUserDetails();
+    this.setCurrentChatDetails();
   }
 
-  getCurrentUserDetails() {
+  setCurrentUserDetails() {
     Auth.currentUserInfo({
       bypassCache: false
     })
       .then(user => { this.setState({ currentUserDetails: user }); })
       .catch(err => console.log(err));
+  }
+
+  setCurrentChatDetails() {
+    this.setState({ currentChatDetails: this.props.navigation.state.params.listedChatDetails });
   }
 
   render() {
@@ -37,15 +42,22 @@ export default class ChatRoom extends React.Component {
         flex: 1,
         width: "100%",
         height: "100%"
-      }
+      },
     });
 
     return (
       <React.Fragment>
-        <ChatHeader></ChatHeader>
+        <ChatHeader 
+        title={this.props.navigation.state.params.listedChatDetails.title}>
+        </ChatHeader>
         <KeyboardAvoidingView style={styles.keyboardAvoidContainer} behavior="padding">
-          <MessageList></MessageList>
-          <MessageEdit currentUserDetails={this.state.currentUserDetails}></MessageEdit>
+          <MessageList 
+            currentChatDetails={this.props.navigation.state.params.listedChatDetails}>
+          </MessageList>
+          <MessageEdit 
+          currentUserDetails={this.state.currentUserDetails}
+          currentChatDetails={this.props.navigation.state.params.listedChatDetails}>
+          </MessageEdit>
         </KeyboardAvoidingView>
       </React.Fragment>
     );
