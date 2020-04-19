@@ -15,14 +15,7 @@ export class MessageEdit extends React.Component {
     super(props);
 
     this.state = {
-      messageToSend: {
-        ID: String,
-        content: String,
-        author: String,
-        createdAt: String
-      },
-      messageInputText: String,
-      messageTimeSection: String
+      messageInputText: String
     };
   }
 
@@ -30,30 +23,21 @@ export class MessageEdit extends React.Component {
   }
 
   async onSubmitMessage() {
-    this.state.messageToSend.ID = uuidv4();
-    this.state.messageToSend.author = this.props.currentUserDetails.username;
-    this.state.messageToSend.content = this.state.messageInputText;
-    this.state.messageToSend.createdAt = this.getTimeString();
 
+    const messageToSend = {
+      ID : uuidv4(),
+      chatID: this.props.currentChatDetails.ID,
+      author: this.props.currentUserDetails.username,
+      content: this.state.messageInputText,
+      createdAt: '[Time Sent Here]'
+    }
+    
     const params = {
-      input: this.state.messageToSend
+      input: messageToSend
     };
 
     await API.graphql(graphqlOperation(mutations.createMessage, params));
     this.setState({ messageInputText: "" });
-  }
-
-  // Get the current time for the message
-  getTimeString() {
-    var hours = new Date().getHours();
-    var min = new Date().getMinutes();
-
-    if(hours < 12)  this.state.messageTimeSection = 'AM';
-    else this.state.messageTimeSection = 'PM';
-
-    if(hours > 12) hours = hours - 12;
-    
-    return hours + ':' + min + ' ' + this.state.messageTimeSection;
   }
 
   render() {

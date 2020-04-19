@@ -18,11 +18,26 @@ export class MessageList extends React.Component {
   }
 
   async componentDidMount() {
-    const messagesFromServer = await API.graphql(graphqlOperation(queries.listMessages));
+
+    const params = {
+      filter : {
+        chatID: {eq : this.props.currentChatDetails.ID }
+      }
+    }
+
+    const messagesFromServer = await API.graphql(graphqlOperation(queries.listMessages, params));
     this.setState({ messages: messagesFromServer.data.listMessages.items });
+    this.createMessageListener();
+  }
+
+  createMessageListener() {
+    
+    const params = {
+      chatID: this.props.currentChatDetails.ID
+    }
 
     const subscription = API.graphql(
-      graphqlOperation(subscriptions.onCreateMessage)
+      graphqlOperation(subscriptions.onCreateMessage, params)
     ).subscribe({
       next: (event) => {
         this.onRecievedNewMessage(event.value.data.onCreateMessage);
@@ -46,7 +61,6 @@ export class MessageList extends React.Component {
       }
     });
 
-    // Map message list to message component
     const data = this.state.messages.map(item => (
       <Message message={item}> </Message>
     ));

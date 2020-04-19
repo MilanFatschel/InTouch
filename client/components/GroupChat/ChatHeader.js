@@ -6,7 +6,6 @@ export class ChatHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        profileName: "[Profile or Channel Name Here]" // TODO: Get this through props
     };
   }
 
@@ -29,7 +28,7 @@ export class ChatHeader extends React.Component {
 
     return (
       <View style={styles.headerContainer}>
-        <Text>{this.state.profileName}</Text>
+        <Text>{this.props.title}</Text>
       </View>
     );
   }
