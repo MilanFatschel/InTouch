@@ -34,3 +34,39 @@ export const onDeleteMessage = /* GraphQL */ `
     }
   }
 `;
+export const onCreateChat = /* GraphQL */ `
+  subscription OnCreateChat($username: String) {
+    onCreateChat(username: $username) {
+      ID
+      chatID
+      title
+      username
+      createdAt
+      lastUpdatedAt
+    }
+  }
+`;
+export const onUpdateChat = /* GraphQL */ `
+  subscription OnUpdateChat($chatID: String) {
+    onUpdateChat(chatID: $chatID) {
+      ID
+      chatID
+      title
+      username
+      createdAt
+      lastUpdatedAt
+    }
+  }
+`;
+export const onDeleteChat = /* GraphQL */ `
+  subscription OnDeleteChat($chatID: String) {
+    onDeleteChat(chatID: $chatID) {
+      ID
+      chatID
+      title
+      username
+      createdAt
+      lastUpdatedAt
+    }
+  }
+`;

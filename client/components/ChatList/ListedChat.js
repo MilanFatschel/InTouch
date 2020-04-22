@@ -9,6 +9,9 @@ export class ListedChat extends React.Component {
     };
   }
 
+  onComponentDidMount() {
+  }
+
   render() {
     const styles = StyleSheet.create({
       listedChatTitleText: {
@@ -34,7 +37,9 @@ export class ListedChat extends React.Component {
     return (
     <TouchableOpacity
     onPress={() => this.props.navigation.navigate('ChatRoom', {
-        listedChatDetails: this.props.listedChatDetails
+        listedChatDetails: this.props.listedChatDetails,
+        currentUserDetails: this.props.currentUserDetails,
+        navigation: this.props.navigation
       })}
     >
       <View style={styles.listedChatContainer}>

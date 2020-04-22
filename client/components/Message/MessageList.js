@@ -21,7 +21,7 @@ export class MessageList extends React.Component {
 
     const params = {
       filter : {
-        chatID: {eq : this.props.currentChatDetails.ID }
+        chatID: {eq : this.props.currentChatDetails.chatID }
       }
     }
 
@@ -33,7 +33,7 @@ export class MessageList extends React.Component {
   createMessageListener() {
     
     const params = {
-      chatID: this.props.currentChatDetails.ID
+      chatID: this.props.currentChatDetails.chatID
     }
 
     const subscription = API.graphql(
@@ -48,7 +48,6 @@ export class MessageList extends React.Component {
   onRecievedNewMessage(newMessage) {
     this.state.messages.push(newMessage);
     this.setState({messages: this.state.messages});
-    this.refs.scrollViewer.scrollToEnd({animated:true});
   }
 
   render() {
@@ -68,7 +67,10 @@ export class MessageList extends React.Component {
     return (
       <ScrollView 
       style={styles.container}
-      ref = 'scrollViewer'>
+      ref={(ref) => this.scrollView = ref}
+      onContentSizeChange={() => {        
+        this.scrollView.scrollToEnd( { animated:true})
+      }}>
         <View>{data}</View>
       </ScrollView>
     );

@@ -26,7 +26,7 @@ export class MessageEdit extends React.Component {
 
     const messageToSend = {
       ID : uuidv4(),
-      chatID: this.props.currentChatDetails.ID,
+      chatID: this.props.currentChatDetails.chatID,
       author: this.props.currentUserDetails.username,
       content: this.state.messageInputText,
       createdAt: '[Time Sent Here]'
