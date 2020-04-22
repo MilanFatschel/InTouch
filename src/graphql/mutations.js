@@ -34,3 +34,39 @@ export const deleteMessage = /* GraphQL */ `
     }
   }
 `;
+export const createChat = /* GraphQL */ `
+  mutation CreateChat($input: CreateChatInput!) {
+    createChat(input: $input) {
+      ID
+      chatID
+      title
+      username
+      createdAt
+      lastUpdatedAt
+    }
+  }
+`;
+export const updateChat = /* GraphQL */ `
+  mutation UpdateChat($input: UpdateChatInput!) {
+    updateChat(input: $input) {
+      ID
+      chatID
+      title
+      username
+      createdAt
+      lastUpdatedAt
+    }
+  }
+`;
+export const deleteChat = /* GraphQL */ `
+  mutation DeleteChat($input: DeleteChatInput!) {
+    deleteChat(input: $input) {
+      ID
+      chatID
+      title
+      username
+      createdAt
+      lastUpdatedAt
+    }
+  }
+`;

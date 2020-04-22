@@ -39,7 +39,6 @@ export default class Confirmation extends React.Component {
   confirmSignUp() {
     Auth.confirmSignUp(this.state.username, this.state.confirmationCode)
       .then(() => {
-        console.log('successful confirm sign up!')
         this.props.navigation.navigate('Welcome')
       })
       .catch(err => this.setState({errorText: err.message, isConfirmationError: true}));

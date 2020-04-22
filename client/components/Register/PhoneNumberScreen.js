@@ -63,7 +63,6 @@ export default class PhoneNumberScreen extends React.Component {
       }
     })
       .then(() => {
-        console.log('successful sign up!')
         this.props.navigation.navigate('Confirmation',
           {
             firstName: this.props.navigation.state.params.firstName,
