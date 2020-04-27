@@ -1,33 +1,43 @@
 import React from "react";
-
 import { TextInput, StyleSheet, View } from "react-native";
+import { v4 as uuidv4 } from 'uuid';
+
+import Amplify, { API, graphqlOperation } from "aws-amplify";
+import aws_exports from "./../../../aws-exports";
+import * as mutations from '../../../src/graphql/mutations';
+
+Amplify.configure(aws_exports);
+
+
 
 export class MessageEdit extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      textToSend: "",
-      clientId: ""
+      messageInputText: String
     };
-    this.onSubmitMessage = this.onSubmitMessage.bind(this);
   }
 
   componentDidMount() {
-    // let socket = io.connect("http://127.0.0.1:3000");
-    // socket.on("connect", () => {
-    //   this.state.clientId = socket.id;
-    // });
   }
 
-  onSubmitMessage() {
-    if (this.state.textToSend.length > 0) {
-      // this.props.socket.emit("MessageSentToServer", {
-      //   text: this.state.textToSend,
-      //   clientId: this.state.clientId
-      // });
-      this.setState({ textToSend: "" });
+  async onSubmitMessage(messageContent) {
+
+    const messageToSend = {
+      ID : uuidv4(),
+      chatID: this.props.currentChatDetails.chatID,
+      author: this.props.currentUserDetails.username,
+      content: messageContent,
+      createdAt: '[Time Sent Here]'
     }
+    
+    const params = {
+      input: messageToSend
+    };
+
+    await API.graphql(graphqlOperation(mutations.createMessage, params));
+    this.setState({ messageInputText: "" });
   }
 
   render() {
@@ -48,7 +58,7 @@ export class MessageEdit extends React.Component {
         borderBottomLeftRadius: 15,
         borderBottomRightRadius: 15,
         padding: 10,
-        fontSize: 18,
+        fontSize: 18
       }
     });
 
@@ -59,11 +69,12 @@ export class MessageEdit extends React.Component {
           placeholder="Enter a Message..."
           multiline={true}
           blurOnSubmit={true}
-          value={this.state.textToSend}
-          onSubmitEditing={() => this.onSubmitMessage()}
-          onChangeText={textToSend => {
-            this.setState({ textToSend });
-          }}/>
+          value={this.state.messageInputText}
+          onSubmitEditing={(value) => this.onSubmitMessage(value)}
+          // onChangeText={messageInputText => {
+          //   this.setState({ messageInputText });
+          // }}
+        />
       </View>
     );
   }
