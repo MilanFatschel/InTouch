@@ -1,19 +1,19 @@
 {
-    "develop": {
+    "master": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-intouch-develop-221615-authRole",
-            "UnauthRoleArn": "arn:aws:iam::164934875985:role/amplify-intouch-develop-221615-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::164934875985:role/amplify-intouch-develop-221615-authRole",
+            "AuthRoleName": "amplify-intouch-master-81223-authRole",
+            "UnauthRoleArn": "arn:aws:iam::164934875985:role/amplify-intouch-master-81223-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::164934875985:role/amplify-intouch-master-81223-authRole",
             "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-intouch-develop-221615-deployment",
-            "UnauthRoleName": "amplify-intouch-develop-221615-unauthRole",
-            "StackName": "amplify-intouch-develop-221615",
-            "StackId": "arn:aws:cloudformation:us-east-1:164934875985:stack/amplify-intouch-develop-221615/c676dfa0-81e3-11ea-ac76-12e727a79a85",
-            "AmplifyAppId": "d23esbi7i2302s"
+            "DeploymentBucketName": "amplify-intouch-master-81223-deployment",
+            "UnauthRoleName": "amplify-intouch-master-81223-unauthRole",
+            "StackName": "amplify-intouch-master-81223",
+            "StackId": "arn:aws:cloudformation:us-east-1:164934875985:stack/amplify-intouch-master-81223/7636e1b0-5c87-11ea-9c9c-0a55488d44ba",
+            "AmplifyAppId": "d37lugmfzj8kyx"
         },
         "categories": {
             "auth": {
-                "intouchc2c54fb4": {}
+                "intouchb336f70b": {}
             }
         }
     }

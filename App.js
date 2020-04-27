@@ -7,13 +7,41 @@ Amplify.configure(config);
 import { withAuthenticator } from "aws-amplify-react-native";
 import { StyleSheet, Text, View } from "react-native";
 
-import RootNavigationStack from "./client/navigators/RootNavigator"
+import { ChatRoom } from "./client/components/GroupChat/ChatRoom";
 
-export default class App extends React.Component {
+class App extends React.Component {
+  async componentDidMount() {
+    const user = await Auth.currentAuthenticatedUser();
+    console.log("user:", user);
+  }
+
+  signOut = () => {
+    Auth.signOut()
+      .then(() => this.props.onStateChange("signedOut"))
+      .catch(err => console.log("err: ", err));
+  };
 
   render() {
     return (
-      <RootNavigationStack/>
+      <View style={styles.container}>
+        <ChatRoom></ChatRoom>
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  title: {
+    fontSize: 28
+  }
+});
+
+export default withAuthenticator(App, {
+  includeGreetings: false
+});
